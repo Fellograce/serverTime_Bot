@@ -2,10 +2,10 @@ import discord
 import asyncio
 import datetime
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 
-load_dotenv()
+#load_dotenv()
 
 # Create a Discord bot instance
 intents = discord.Intents.default()
