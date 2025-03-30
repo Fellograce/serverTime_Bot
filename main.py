@@ -2,6 +2,7 @@ import discord
 import asyncio
 import datetime
 import os
+import requests
 #from dotenv import load_dotenv
 
 
@@ -22,15 +23,20 @@ async def on_ready():
 
     while True:
         try:
-            now = datetime.datetime.utcnow()
-            formatted_time = now.strftime('%a %H:%M')  # Format time as HH:MM:SS
-            seconds = now.strftime('%S')
+            #GET request to xiv server
+            response = requests.get('https://v2.xivapi.com/api')
+            headers = response.headers
+            date_string = headers.get('date')
+            date_obj = datetime.datetime.strptime(date_string, '%a, %d %b %Y %H:%M:%S GMT')
+
+            new_nickname = date_obj.strftime('%a %H:%M')
+            seconds = date_obj.second
 
             for guild in bot.guilds:
                 member = guild.get_member(bot.user.id)
 
                 # Update the bot's nickname with the current time
-                await member.edit(nick=formatted_time)
+                await member.edit(nick=new_nickname)
 
             # Run the loop every minute
             await asyncio.sleep(60 - int(seconds))  # wait till a minute has passed in real time
