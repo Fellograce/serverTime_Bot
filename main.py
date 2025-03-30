@@ -32,7 +32,7 @@ async def on_ready():
                 # Update the bot's nickname with the current time
                 await member.edit(nick=formatted_time)
 
-            # Run the loop every hour
+            # Run the loop every minute
             await asyncio.sleep(60 - int(seconds))  # wait till a minute has passed in real time
         except Exception as e:
             print(f"An error occurred: {e}")
