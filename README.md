@@ -6,8 +6,8 @@ A brief description of your project.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone 'GITHUB PROJECT URL'
+cd REPOSITORY
 ```
 
 ### 2. Create and Activate a Virtual Environment
